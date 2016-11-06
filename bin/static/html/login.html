@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+<script src="E:/workspace/TestRoutingDiffDBWeb/src/main/webapp/WEB-INF/js/app.js"></script>
+<script src="E:/workspace/TestRoutingDiffDBWeb/src/main/webapp/WEB-INF/js/user_controller.js"></script>
+<script src="E:/workspace/TestRoutingDiffDBWeb/src/main/webapp/WEB-INF/js/user_service.js"></script>
+</head>
+<body>
+
+<h2>User Login Page</h2>
+
+<form ng-app="myApp" ng-controller="UserController as ctrl" 
+name="myForm" ng-submit="ctrl.submit()" novalidate>
+
+<p>user name:<br>
+<input type="text" name="loginName" ng-model="loginName" required>
+<!-- <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid"> -->
+<!-- <span ng-show="myForm.user.$error.required">User name is required.</span> -->
+<!-- <span ng-show="myForm.userName.$error.email">Invalid user name.</span> -->
+</span>
+</p>
+
+<p>password:<br>
+<input type="password" name="password" ng-model="password" required>
+<!-- <span style="color:red" ng-show="myForm.password.$dirty && myForm.password.$invalid"> -->
+<!-- <span ng-show="myForm.password.$error.required">Password is required.</span> -->
+<!-- </span> -->
+</p>
+
+<p>
+<input type="submit" value="submit"/>
+<!-- ng-disabled="myForm.userName.$dirty && myForm.userName.$invalid ||   -->
+<!-- myForm.password.$dirty && myForm.password.$invalid"> -->
+
+<button ng-click="toggle()">login</button>
+<button ng-click="ctrl.reset()">Reset Form</button>
+</p>
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope,$http) {
+	$scope.toggle = function() {
+		$http.get("/user/1");
+    };
+	
+});
+</script>
+
+</body>
+</html>
